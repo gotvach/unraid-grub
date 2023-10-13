@@ -55,7 +55,7 @@ Important to set the device appropriately or the 2nd stage boot image
 (core,.img) may not be found. Seen by a hanging `GRUB     _` line on boot.
 
 ```
-mkdir -p UNRAID/boot/grub/
+mkdir -p /media/grant/UNRAID/boot/grub/
 blkid -t LABEL=UNRAID
 ```
 
@@ -63,7 +63,7 @@ The UD5P only seems to like booting this with USB-FDD, hence the use of
 `fd0`
 
 ```
-echo '(fd0)    /dev/disk/by-uuid/1234-ABCD' > UNRAID/boot/grub/device.map
+echo '(fd0)    /dev/disk/by-uuid/1234-ABCD' > /media/grant/UNRAID/boot/grub/device.map
 ```
 
 ## Syslinux cfg
@@ -72,7 +72,7 @@ A handy tool to convert `syslinux.cfg` to `grub.cfg` called
 `grub-syslinux2cfg`.
 
 ```
-grub-syslinux2cfg UNRAID/syslinux/syslinux.cfg > UNRAID/boot/grub/grub.cfg
+grub-syslinux2cfg UNRAID/syslinux/syslinux.cfg > /media/grant/UNRAID/boot/grub/grub.cfg
 ```
 
 ## Install grub
@@ -82,7 +82,7 @@ Installs the grub boot loader into `/dev/sdc` and the modules into
 were required to boot UNRAID.
 
 ```
-grub-install --target=i386-pc --boot-directory UNRAID/boot/ --modules="usb part_msdos" --allow-floppy --install-modules="test usb normal linux linux16" -v /dev/sdc
+grub-install --target=i386-pc --boot-directory /media/grant/UNRAID/boot/ --modules="usb part_msdos" --allow-floppy --install-modules="test usb normal linux linux16" -v /dev/sdc
 ```
 
 Key areas of interest from the output of that process:
